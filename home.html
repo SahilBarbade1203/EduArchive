@@ -1,0 +1,54 @@
+{% extends 'base.html'%}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="row d-flex justify-content-center align-items-center h-50">
+      <div class="col-12 col-md-15 col-lg-15 col-xl-15">
+        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+            <div class="mb-md-5 mt-md-4">
+                <table class="table table-dark table-striped table-hover align-middle">
+                    <thead>
+                        <tr>
+                        <th scope="col">Sr No.</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Owner</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Uploaded On</th>
+                        <th scope="col">Access Uploads</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        {% for document in documents %}
+                        <th scope="row">{{forloop.counter}}</th>
+                        <td>{{document.Title}}</td>
+                        <td>{{document.Author}}</td>
+                        <td>{{document.Comment}}</td>
+                        <td><table>
+                            <tr>
+                                <td>{{document.Time|date}}</td>
+                            </tr>
+                            <tr>
+                                <td>{{document.Time|time}}</td>
+                            </tr> 
+                        </table></td>
+                        <td>
+                            <table>
+                            <tr>
+                                <td><a class = "btn btn-outline-success" href="{% url 'download' document.id %}">Download</a></td>
+                            </tr>
+                            <tr>
+                                <td> <a class = "btn btn-outline-danger" href="{% url 'pdf' document.id %}">PDF Viewer</a></td>
+                            </tr> 
+                           </table>
+                        </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}

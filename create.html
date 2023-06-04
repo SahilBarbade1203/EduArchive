@@ -1,0 +1,36 @@
+{% extends 'base.html'%}
+{% block title %}Create{% endblock %}
+{% block content %}
+<div class="containerpy-5 h-50" style ="margin-top : 10px;">
+    <div class="row d-flex justify-content-center align-items-center h-50">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+            <div class="mb-md-5 mt-md-4">
+              <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="input-group mb-3">
+                   <span class="input-group-text" id="basic-addon1">@</span>
+                    {{form.Title}}
+                </div>
+                <div class="input-group mb-3">
+                   <span class="input-group-text" id="basic-addon1">#</span>
+                    {{form.Author}}
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Comment</span>
+                   {{form.Comment}}
+                </div>
+                <div class="mb-3">
+                   {{form.File}}
+                </div>
+                <br>
+                <button class="btn btn-outline-light btn-lg px-5 rounded-4" type="submit">Create</button>
+              </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
